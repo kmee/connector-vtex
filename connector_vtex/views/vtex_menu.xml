@@ -1,0 +1,9 @@
+<odoo>
+<!-- Copyright 2020 KMEE
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+    <menuitem id="menu_vtex_root" parent="connector.menu_connector_root" name="VTEX" sequence="10" groups="connector.group_connector_manager" />
+
+    <menuitem id="menu_vtex_backend" name="Backends" parent="menu_vtex_root" action="vtex_backend_act_window" />
+
+</odoo>

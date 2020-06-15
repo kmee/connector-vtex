@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2020 KMEE
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <record model="ir.ui.view" id="vtex_backend_form_view">
+        <field name="name">vtex.backend.form (in connector_vtex)</field>
+        <field name="model">vtex.backend</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="account_name"/>
+                        <field name="environment"/>
+                        <field name="app_key" password="True"/>
+                        <field name="app_token" password="True"/>
+                        <field name="base_url"/>
+                        <button name="test_connection" string="Test Connection" type="object"/>
+                    </group>
+                </sheet>
+                <div class="oe_chatter"></div>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="vtex_backend_search_view">
+        <field name="name">vtex.backend.search (in connector_vtex)</field>
+        <field name="model">vtex.backend</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+
+            </search>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="vtex_backend_tree_view">
+        <field name="name">vtex.backend.tree (in connector_vtex)</field>
+        <field name="model">vtex.backend</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="environment"/>
+                <field name="account_name"/>
+                <field name="base_url"/>
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="vtex_backend_act_window">
+        <field name="name">Backend</field>
+        <field name="res_model">vtex.backend</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+
+</odoo>

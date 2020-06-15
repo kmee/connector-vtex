@@ -26,7 +26,13 @@
         ],
     },
     'data': [
+        'security/vtex_backend.xml',
+
+        'views/vtex_backend.xml',
+
+        'views/vtex_menu.xml',
     ],
     'demo': [
+        'demo/vtex_backend.xml',
     ],
 }
