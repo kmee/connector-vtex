@@ -26,20 +26,20 @@ class VtexMixin(models.AbstractModel):
             try:
                 vtex_view = self.env.ref("connector_vtex.vtex_mixin_form_view")
                 vtex_arch = etree.fromstring(vtex_view["arch"])
-                page_node = vtex_arch.xpath("//page[@name='vtex_page']")[0]
-
                 doc = etree.fromstring(model_view.get('arch'))
                 # Replace page
                 doc_page_node = doc.xpath("//notebook")
 
                 if doc_page_node:
+                    page_node = vtex_arch.xpath("//page[@name='vtex_page']")[0]
                     for n in page_node.getiterator():
                         setup_modifiers(n)
                     doc_page_node[0].append(page_node)
                 else:
                     sheet_page_node = doc.xpath("//sheet") or doc.xpath("//form")
+
                     field_node = vtex_arch.xpath("//field[@name='vtex_ids']")[0]
-                    for n in page_node.getiterator():
+                    for n in field_node.getiterator():
                         setup_modifiers(n)
                     sheet_page_node[0].append(field_node)
 
