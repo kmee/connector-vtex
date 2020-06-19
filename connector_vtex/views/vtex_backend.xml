@@ -10,17 +10,57 @@
         <field name="arch" type="xml">
             <form>
                 <header>
+                    <button name="synchronize_metadata" type="object"
+                            string="Synchronize Metadata" class="oe_highlight"/>
                 </header>
                 <sheet>
-                    <group>
-                        <field name="name"/>
-                        <field name="account_name"/>
-                        <field name="environment"/>
-                        <field name="app_key" password="True"/>
-                        <field name="app_token" password="True"/>
-                        <field name="base_url"/>
-                        <button name="test_connection" string="Test Connection" type="object"/>
-                    </group>
+                    <label for="name" class="oe_edit_only"/>
+                    <h1>
+                        <field name="name" class="oe_inline"/>
+                    </h1>
+                    <field name="base_url" nolabel="1"/>
+                    <notebook>
+                        <page string="API">
+                            <group>
+                                <field name="name"/>
+                                <field name="version"/>
+                                <field name="account_name"/>
+                                <field name="environment"/>
+                                <field name="app_key" password="True"/>
+                                <field name="app_token" password="True"/>
+                                <button name="test_connection" string="Test Connection" class="oe_highlight" type="object"/>
+                            </group>
+                        </page>
+                        <page string="Sale" name="Sale">
+                            <group>
+                                <field name="account_analytic_id" groups="sale.group_analytic_accounting"/>
+                                <field name="warehouse_id"/>
+                                <field name="fiscal_position_id"/>
+                            </group>
+                        </page>
+                        <page name="import" string="Imports">
+                            <group col="4">
+                                <field name='import_categories_from_date' colspan="2"/>
+                                <button name="import_categories" type="object" string="Import Categories" class="oe_highlight" colspan="2"/>
+                            </group>
+                            <group col="4">
+                                <field name='import_brands_from_date' colspan="2"/>
+                                <button name="import_brands" type="object" string="Import Brands" class="oe_highlight" colspan="2"/>
+                            </group>
+                            <group col="4">
+                                <field name='import_products_from_date' colspan="2"/>
+                                <button name="import_customers" type="object" string="Import Products" class="oe_highlight" colspan="2"/>
+                            </group>
+                            <group col="4">
+                                <field name='import_orders_from_date' colspan="2"/>
+                                <button name="import_sale_orders" type="object" string="Import Sale Orders" class="oe_highlight" colspan="2"/>
+                            </group>
+                            <group col="4">
+                                <field name='import_customers_from_date' colspan="2"/>
+                                <button name="import_customers" type="object" string="Import Customers" class="oe_highlight" colspan="2"/>
+                            </group>
+                        </page>
+                    </notebook>
                 </sheet>
                 <div class="oe_chatter"></div>
             </form>
