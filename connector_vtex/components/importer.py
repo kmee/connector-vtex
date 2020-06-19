@@ -177,3 +177,20 @@ class DelayedBatchImporter(AbstractComponent):
         delayable = self.model.with_delay(**job_options or {})
         delayable.import_record(self.backend_record, external_id,
                                 record_data, **kwargs)
+
+    def run(self, filters=None):
+        """ Run the synchronization """
+        from_date = filters.pop('from_date', None)
+        to_date = filters.pop('to_date', None)
+        record_ids = self.backend_adapter.search(
+            filters,
+            from_date=from_date,
+            to_date=to_date,
+        )
+        _logger.debug('search for vtex %s - %s returned %s',
+                      self._name, filters, record_ids)
+        for record_data in record_ids:
+            self._import_record(
+                external_id=record_data['id'],
+                record_data=record_data
+            )
