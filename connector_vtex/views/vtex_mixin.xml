@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2020 KMEE INFORMATICA LTDA
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <record model="ir.ui.view" id="vtex_mixin_form_view">
+        <field name="name">vtex.mixin.form (in connector_vtex)</field>
+        <field name="model">vtex.mixin</field>
+        <field name="arch" type="xml">
+            <form noedit="1">
+                <sheet>
+                    <notebook>
+                        <page name="vtex_page" string="VTEX">
+                            <field name="vtex_ids" readonly="1">
+                                <tree>
+                                    <field name="backend_id"/>
+                                    <field name="vtex_id"/>
+                                    <field name="sync_date"/>
+                                    <field name="create_date"/>
+                                    <field name="create_uid"/>
+                                    <field name="write_date"/>
+                                    <field name="write_uid"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter"></div>
+            </form>
+        </field>
+    </record>
+
+</odoo>

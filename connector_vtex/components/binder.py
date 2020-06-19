@@ -9,7 +9,10 @@ from odoo import tools
 class VtexModelBinder(Component):
     _name = 'vtex.binder'
     _inherit = ['base.binder', 'base.vtex.connector']
-
+    _apply_on = [
+        'vtex.product.brand',
+        'vtex.product.category',
+    ]
     _external_field = 'vtex_id'
 
     def to_internal(self, external_id, unwrap=False):

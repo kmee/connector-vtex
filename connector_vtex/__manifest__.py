@@ -29,8 +29,9 @@
     'data': [
         'security/vtex_backend.xml',
 
-        'views/vtex_backend.xml',
+        'views/vtex_mixin.xml',
 
+        'views/vtex_backend.xml',
         'views/vtex_menu.xml',
     ],
     'demo': [

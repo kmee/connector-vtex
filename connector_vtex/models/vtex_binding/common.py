@@ -23,6 +23,10 @@ class VtexBinding(models.AbstractModel):
         ondelete='restrict',
     )
     vtex_id = fields.Char(string='ID on Vtex')
+    create_date = fields.Datetime('Create Date', readonly=True)
+    write_date = fields.Datetime('Update Date', readonly=True)
+    create_uid = fields.Many2one('res.users', string='Creator', readonly=True)
+    write_uid = fields.Many2one('res.users', string='Writer', readonly=True)
 
     @job(default_channel='root.vtex')
     @api.model
