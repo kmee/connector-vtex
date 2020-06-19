@@ -14,6 +14,7 @@
         "product",
         "product_multi_category",  # oca/product-attribute
         "connector_ecommerce",  # oca/connector-ecommerce
+        "product_brand",
         # "base_multi_image",  # oca/server-tools # not migrated yet
     ],
     "external_dependencies": {
