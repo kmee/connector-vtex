@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2020 KMEE
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <record model="ir.ui.view" id="wizard_vtex_product_category_form_view">
+        <field name="name">wizard.vtex.product.category.form (in connector_vtex)</field>
+        <field name="model">wizard.vtex.product.category</field>
+        <field name="arch" type="xml">
+            <form string="Export to Vtex - Product Category">
+                <group>
+                    <field name="backend_id"/>
+                </group>
+                <footer>
+                    <button name="doit"
+                            string="OK"
+                            class="btn-primary"
+                            type="object"/>
+                    <button string="Cancel"
+                            class="btn-default"
+                            special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <act_window id="wizard_vtex_product_category_act_multi"
+        multi="True"
+        key2="client_action_multi"
+        name="Export to Vtex"
+        res_model="wizard.vtex.product.category"
+        src_model="product.category"
+        view_mode="form"
+        target="new"
+        view_type="form"
+    />
+
+</odoo>

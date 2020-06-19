@@ -29,8 +29,10 @@
     'data': [
         'security/vtex_backend.xml',
 
-        'views/vtex_mixin.xml',
+        'wizards/wizard_vtex_product_category.xml',
+        'wizards/wizard_vtex_product_brand.xml',
 
+        'views/vtex_mixin.xml',
         'views/vtex_backend.xml',
         'views/vtex_menu.xml',
     ],
