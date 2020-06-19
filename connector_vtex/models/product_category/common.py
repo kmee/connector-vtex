@@ -32,3 +32,8 @@ class VtexProductCategory(models.Model):
         comodel_name='vtex.product.category',
         string='Vtex Parent Category',
         ondelete='cascade', )
+    vtex_child_id = fields.One2many(
+        comodel_name='vtex.product.category',
+        inverse_name='vtex_parent_id',
+        string='Vtex Child Categories',
+    )
