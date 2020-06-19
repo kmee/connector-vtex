@@ -12,4 +12,4 @@ class CategoryAdapter(Component):
     _inherit = 'vtex.adapter'
     _apply_on = 'vtex.product.category'
     _api = 'catalog/pvt/category'
-    _api_search = 'catalog_system/pub/category/tree'
+    _api_search = 'catalog_system/pub/category/tree/100'

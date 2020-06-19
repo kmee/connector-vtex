@@ -27,9 +27,7 @@ class VtexProductCategory(models.Model):
     meta_tag_description = fields.Char(
         string='MetaTagDescription'
     )
-    url = fields.Char(
-        string='URL'
-    )
+    has_children = fields.Boolean()
     vtex_parent_id = fields.Many2one(
         comodel_name='vtex.product.category',
         string='Vtex Parent Category',
