@@ -21,27 +21,20 @@ class VtexProductBrand(models.Model):
         required=True,
         ondelete='cascade'
     )
-    keywords = fields.Char(
-        string='Keywords'
-    )
-    site_title = fields.Char(
-        string='SiteTitle'
+    image_url = fields.Char(
+        string='Category Image URL',
+        help='imageUrl'
     )
     active = fields.Boolean(
-        default=True
+        string='If the Brand is active',
+        default=True,
+        help='isActive'
     )
-    menu_home = fields.Boolean(
-        string="MenuHome",
+    title = fields.Char(
+        string='Meta Title for the Brand page',
+        help='title'
     )
-    adwords_remarketing_code = fields.Char(
-        string="AdWordsRemarketingCode"
-    )
-    lomadee_campaing_code = fields.Char(
-        string="LomadeeCampaignCode"
-    )
-    score = fields.Char(
-        string="Score"
-    )
-    link_id = fields.Char(
-        string='Link ID'
+    meta_tag_description = fields.Char(
+        string='Meta Description for the Brand page',
+        help='metaTagDescription',
     )
