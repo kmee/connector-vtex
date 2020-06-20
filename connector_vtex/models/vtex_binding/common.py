@@ -45,3 +45,18 @@ class VtexBinding(models.AbstractModel):
         with backend.work_on(self._name) as work:
             importer = work.component(usage='batch.importer')
             return importer.run(filters=filters)
+
+    @job(default_channel='root.vtex')
+    @api.multi
+    def export_record(self):
+        self.ensure_one()
+        with self.backend_id.work_on(self._name) as work:
+            exporter = work.component(usage='record.exporter')
+            return exporter.run(self)
+        
+    @job(default_channel='root.vtex')
+    def export_delete_record(self, backend_id, external_id):
+        """ Delete a record on Vtex """
+        with backend_id.work_on(self._name) as work:
+            deleter = work.component(usage='record.exporter.deleter')
+            return deleter.run(external_id)

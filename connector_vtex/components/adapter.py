@@ -19,13 +19,13 @@ class VtexCRUDAdapter(AbstractComponent):
             params = {}
         if data is None:
             data = {}
-        response = http_request(url, headers=headers, params=params, data=data)
+        response = http_request(url, headers=headers, params=params, data=json.dumps(data))
         if response.status_code != 200:
             error = response.json()
             message = '%s - %s' % (error['error']['code'],
                                    error['error']['message'])
             raise Exception(message)
-        return response.json()
+        return response.content and response.json() or response.ok
 
     def _prepare_headers(self):
         return {
@@ -65,4 +65,28 @@ class GenericAdapter(AbstractComponent):
             requests.get,
             url=self._api_search or self._api,
             params=params if params else {}
+        )
+
+    def create(self, data):
+        result = self._call(
+            requests.post,
+            url=self._api,
+            params={},
+            data=data if data else {}
+        )
+        return result.get('Id')
+
+    def write(self, external_id, data):
+        return self._call(
+            requests.put,
+            url=self._api + '/' + external_id,
+            params={},
+            data=data if data else {}
+        )
+
+    def delete(self, external_id):
+        return self._call(
+            requests.delete,
+            url=self._api + '/' + external_id,
+            params={},
         )

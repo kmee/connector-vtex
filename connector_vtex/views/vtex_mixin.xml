@@ -12,7 +12,7 @@
                 <sheet>
                     <notebook>
                         <page name="vtex_page" string="VTEX">
-                            <field name="vtex_ids" readonly="1">
+                            <field name="vtex_bind_ids" readonly="1">
                                 <tree>
                                     <field name="backend_id"/>
                                     <field name="vtex_id"/>

@@ -11,7 +11,7 @@ class VtexMixin(models.AbstractModel):
     _description = 'Vtex mixin'
 
     # Override it on inherited models
-    vtex_ids = fields.One2many(
+    vtex_bind_ids = fields.One2many(
         comodel_name='vtex.binding',
         # inverse_name='odoo_id'
     )
@@ -38,7 +38,7 @@ class VtexMixin(models.AbstractModel):
                 else:
                     sheet_page_node = doc.xpath("//sheet") or doc.xpath("//form")
 
-                    field_node = vtex_arch.xpath("//field[@name='vtex_ids']")[0]
+                    field_node = vtex_arch.xpath("//field[@name='vtex_bind_ids']")[0]
                     for n in field_node.getiterator():
                         setup_modifiers(n)
                     sheet_page_node[0].append(field_node)

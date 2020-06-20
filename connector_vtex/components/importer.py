@@ -17,7 +17,6 @@ class VtexImporter(AbstractComponent):
 
     def __init__(self, work_context):
         super(VtexImporter, self).__init__(work_context)
-        self.external_id = None
         self.vtex_record = None
 
     def _import_dependency(self, vtex_id, binding_model, vtex_data,
@@ -49,7 +48,7 @@ class VtexImporter(AbstractComponent):
         return self.binder.to_internal(self.vtex_id)
 
     def _map_data(self):
-        return self.mapper.map_record(self.vtex_record)
+        return self.mapper.map_record(self.vtex_record) # TODO: Refatorar
 
     def _create_data(self, map_record, **kwargs):
         return map_record.values(for_create=True, **kwargs)
