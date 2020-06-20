@@ -11,7 +11,7 @@ class ProductCategory(models.Model):
     _name = 'product.category'
     _inherit = ['product.category', 'vtex.mixin']
 
-    vtex_ids = fields.One2many(
+    vtex_bind_ids = fields.One2many(
         comodel_name='vtex.product.category',
         inverse_name='odoo_id',
     )

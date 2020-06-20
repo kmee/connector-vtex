@@ -35,3 +35,17 @@ class ProductCategoryImportMapper(Component):
 
         parent = parent_binding.odoo_id
         return {'parent_id': parent.id, 'vtex_parent_id': parent_binding.id}
+
+
+class ProductCategoryExportMapper(Component):
+    _name = 'vtex.product.category.export.mapper'
+    _inherit = 'vtex.export.mapper'
+    _apply_on = 'vtex.product.category'
+
+    direct = [
+        ('name', 'name'),
+        ('title', 'Title'),
+        ('meta_tag_description', 'MetaTagDescription'),
+        ('has_children', 'hasChildren'),
+    ]
+
