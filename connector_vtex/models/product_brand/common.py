@@ -28,7 +28,13 @@ class VtexProductBrand(models.Model):
     active = fields.Boolean(
         string='If the Brand is active',
         default=True,
-        help='isActive'
+        help='isActive',
+        required = True,
+    )
+    menu_home = fields.Boolean(
+        string='Exibir no menu da Home',
+        default=True,
+        required=True,
     )
     title = fields.Char(
         string='Meta Title for the Brand page',
